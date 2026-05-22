@@ -1,5 +1,4 @@
 import random
-import numpy
 
 class Cell:
     def __init__(self, initial_state: int):
