@@ -39,10 +39,24 @@ while running:
     cell_h = max(1, surface.get_height() // size_y)
     cell_size = min(cell_w, cell_h)
 
+    grid_width = cell_size * size_x
+    grid_height = cell_size * size_y
+    offset_x = (surface.get_width() - grid_width) // 2
+    offset_y = (surface.get_height() - grid_height) // 2
+
     for x in range(size_x):
         for y in range(size_y):
-            if grid.grid[x][y].state == 1:
-                pygame.draw.rect(surface, (255, 255, 255), (x*cell_size, y*cell_size, cell_size, cell_size))
+            if grid.grid[x][y] == 1:
+                pygame.draw.rect(
+                    surface,
+                    (255, 255, 255),
+                    (
+                        offset_x + x * cell_size,
+                        offset_y + y * cell_size,
+                        cell_size,
+                        cell_size,
+                    ),
+                )
 
     grid.update_grid()
     pygame.display.flip()
